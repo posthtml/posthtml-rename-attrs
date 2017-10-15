@@ -1,40 +1,40 @@
 var posthtml = require('posthtml'),
     expect = require('chai').expect,
-    extendAttrs = require('..');
+    renameTags = require('..');
 
 
 describe('Plugin', function() {
 
     it('should process simple class selectors', function() {
-        var attrsTree = { '.wow': { id: 'wow_id' }},
+        var options = { '.wow': 'span' },
             html = '<div class="wow">OMG</div>';
 
-        return pluginProcess(attrsTree, html)
+        return pluginProcess(options, html)
             .then(function(html) {
-                expect(html).to.eql('<div class="wow" id="wow_id">OMG</div>');
+                expect(html).to.eql('<span class="wow">OMG</span>');
             });
     });
 
 
     it('should process tag selectors', function () {
-        var attrsTree = { 'div': { id: 'wow' }},
+        var options = { 'div': 'span' },
             html = '<div>OMG</div><p>block</p><div>OMG2</div>',
-            expectedHtml = '<div id="wow">OMG</div><p>block</p>' +
-                           '<div id="wow">OMG2</div>';
+            expectedHtml = '<span>OMG</span><p>block</p>' +
+                           '<span>OMG2</span>';
 
-        return pluginProcess(attrsTree, html)
+        return pluginProcess(options, html)
             .then(function(html) {
                 expect(html).to.eql(expectedHtml);
             });
     });
 
     it('should process other match helper in keys', function () {
-        var attrsTree = { 'p#id': { id: 'wow' }},
-            html = '<div id="id">OMG</div><p id="id">block</p><div>OMG2</div>',
-            expectedHtml = '<div id="id">OMG</div><p id="wow">block</p>' +
+        var options = { 'p#wow': 'span' },
+            html = '<div id="id">OMG</div><p id="wow">block</p><div>OMG2</div>',
+            expectedHtml = '<div id="id">OMG</div><span id="wow">block</span>' +
                            '<div>OMG2</div>';
 
-        return pluginProcess(attrsTree, html)
+        return pluginProcess(options, html)
             .then(function(html) {
                 expect(html).to.eql(expectedHtml);
             });
@@ -42,9 +42,9 @@ describe('Plugin', function() {
 });
 
 
-function pluginProcess(attrsTree, html) {
+function pluginProcess(options, html) {
     return posthtml()
-        .use(extendAttrs({ attrsTree: attrsTree }))
+        .use(renameTags(options))
         .process(html)
         .then(function (result) {
             return result.html;

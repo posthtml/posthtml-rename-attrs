@@ -1,16 +1,14 @@
-var objectAssign = require('object-assign');
-var matchHelper = require('posthtml-match-helper');
+const matchHelper = require('posthtml-match-helper');
 
 module.exports = function (options) {
     options = options || {};
-    options.attrsTree = options.attrsTree || {};
 
-    return function extendAttrs(tree) {
-        var keys = Object.keys(options.attrsTree);
+    return function renameTags(tree) {
+        var keys = Object.keys(options);
         var matchers = keys.map(matchHelper);
         keys.forEach(function(key, i) {
             tree.match(matchers[i], function(node) {
-                node.attrs = objectAssign({}, node.attrs || {}, options.attrsTree[key]);
+                node.tag = options[key];
                 return node;
             });
         });

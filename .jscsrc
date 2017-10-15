@@ -1,8 +1,0 @@
-{
-    "plugins": ["jscs-protein"],
-    "excludeFiles": [
-        ".git/**",
-        "node_modules/**"
-    ],
-    "fileExtensions": [".js"]
-}

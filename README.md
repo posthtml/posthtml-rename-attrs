@@ -1,6 +1,6 @@
-# posthtml-extend-attrs
+# posthtml-rename-tags
 
-PostHTMLExtendAttrs is plugin for [PostHTML](https://github.com/posthtml/posthtml). It extend HTML attrs with new attrs and data.
+PostHTMLRenameTags is plugin for [PostHTML](https://github.com/posthtml/posthtml). It replace HTML tags with new tag.
 
 ## Usage
 
@@ -8,13 +8,13 @@ PostHTMLExtendAttrs is plugin for [PostHTML](https://github.com/posthtml/posthtm
 var posthtml = require('posthtml'),
     html = '<div class="wow">OMG</div>';
 
-posthtml([ require('posthtml-extend-attrs')({
-    attrsTree: { '.wow' : { id: 'wow_id' }}
+posthtml([ require('posthtml-rename-tags')({
+    '.wow' : 'span'
 })])
     .process(html)
     .then(function(result) {
         console.log(result);
     });
 
-// <div class="wow" id="wow_id">OMG</div>
+// <span class="wow">OMG</span>
 ```
