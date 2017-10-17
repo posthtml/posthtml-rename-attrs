@@ -1,14 +1,10 @@
 {
   "name": "posthtml-rename-attrs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Rename HTML tags",
   "keywords": [
     "posthtml"
   ],
-  "dependencies": {
-    "posthtml-match-helper": "^1.0.1"
-  },
-  "peerDependencies": {},
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^4.0.1",
