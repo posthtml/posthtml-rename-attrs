@@ -10,9 +10,7 @@ const posthtml = require('posthtml'),
 
 const prefix = v => v === 'class' ? `prefix-${v}` : v;
 
-posthtml([ require('posthtml-rename-attrs')({
-    '.wow' : prefix
-})])
+posthtml([ require('posthtml-rename-attrs')(prefix)])
     .process(html)
     .then(function(result) {
         console.log(result);
