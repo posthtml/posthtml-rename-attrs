@@ -1,11 +1,12 @@
 {
   "name": "posthtml-rename-attrs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Rename HTML tags",
   "keywords": [
     "posthtml"
   ],
   "devDependencies": {
+    "camelcase": "^4.1.0",
     "chai": "^4.1.2",
     "mocha": "^4.0.1",
     "posthtml": "^0.9.2"
