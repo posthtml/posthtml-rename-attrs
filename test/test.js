@@ -2,25 +2,26 @@ var posthtml = require('posthtml'),
     expect = require('chai').expect,
     renameTags = require('..');
 
+const prefix = v => v === 'class' ? `prefix-${v}` : v;
 
 describe('Plugin', function() {
 
     it('should process simple class selectors', function() {
-        var options = { '.wow': 'span' },
+        var options = { '.wow': prefix },
             html = '<div class="wow">OMG</div>';
 
         return pluginProcess(options, html)
             .then(function(html) {
-                expect(html).to.eql('<span class="wow">OMG</span>');
+                expect(html).to.eql('<div prefix-class="wow">OMG</div>');
             });
     });
 
 
-    it('should process tag selectors', function () {
-        var options = { 'div': 'span' },
+    it('should process tag selectors and skip empty attrs', function () {
+        var options = { 'div': prefix },
             html = '<div>OMG</div><p>block</p><div>OMG2</div>',
-            expectedHtml = '<span>OMG</span><p>block</p>' +
-                           '<span>OMG2</span>';
+            expectedHtml = '<div>OMG</div><p>block</p>' +
+                           '<div>OMG2</div>';
 
         return pluginProcess(options, html)
             .then(function(html) {
@@ -28,10 +29,10 @@ describe('Plugin', function() {
             });
     });
 
-    it('should process other match helper in keys', function () {
-        var options = { 'p#wow': 'span' },
+    it('should process other match helper and skip non class attrs', function () {
+        var options = { 'p#wow': prefix },
             html = '<div id="id">OMG</div><p id="wow">block</p><div>OMG2</div>',
-            expectedHtml = '<div id="id">OMG</div><span id="wow">block</span>' +
+            expectedHtml = '<div id="id">OMG</div><p id="wow">block</p>' +
                            '<div>OMG2</div>';
 
         return pluginProcess(options, html)

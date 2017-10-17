@@ -1,5 +1,5 @@
 {
-  "name": "posthtml-rename-tags",
+  "name": "posthtml-rename-attrs",
   "version": "1.0.0",
   "description": "Rename HTML tags",
   "keywords": [
@@ -21,11 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:madzhup/posthtml-rename-tags.git"
+    "url": "git@github.com:madzhup/posthtml-rename-attrs.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/madzhup/posthtml-rename-tags/issues"
+    "url": "https://github.com/madzhup/posthtml-rename-attrs/issues"
   },
-  "homepage": "https://github.com/madzhup/posthtml-rename-tags"
+  "homepage": "https://github.com/madzhup/posthtml-rename-attrs"
 }

@@ -1,20 +1,22 @@
-# posthtml-rename-tags
+# posthtml-rename-attrs
 
-PostHTMLRenameTags is plugin for [PostHTML](https://github.com/posthtml/posthtml). It replace HTML tags with new tag.
+PostHTMLRenameAttrs is plugin for [PostHTML](https://github.com/posthtml/posthtml). It rename HTML tags attrs with passed function.
 
 ## Usage
 
 ``` javascript
-var posthtml = require('posthtml'),
+const posthtml = require('posthtml'),
     html = '<div class="wow">OMG</div>';
 
-posthtml([ require('posthtml-rename-tags')({
-    '.wow' : 'span'
+const prefix = v => v === 'class' ? `prefix-${v}` : v;
+
+posthtml([ require('posthtml-rename-attrs')({
+    '.wow' : prefix
 })])
     .process(html)
     .then(function(result) {
         console.log(result);
     });
 
-// <span class="wow">OMG</span>
+// <div prefix-class="wow">OMG</div>
 ```
