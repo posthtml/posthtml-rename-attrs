@@ -11,6 +11,9 @@
     "mocha": "^4.0.1",
     "posthtml": "^0.9.2"
   },
+  "author": {
+    "name": "Andrey Zhupik"
+  },
   "main": "index.js",
   "scripts": {
     "test": "npm run mocha",
@@ -18,11 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:madzhup/posthtml-rename-attrs.git"
+    "url": "git@github.com:posthtml/posthtml-rename-attrs.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/madzhup/posthtml-rename-attrs/issues"
+    "url": "https://github.com/posthtml/posthtml-rename-attrs/issues"
   },
-  "homepage": "https://github.com/madzhup/posthtml-rename-attrs"
+  "homepage": "https://github.com/posthtml/posthtml-rename-attrs"
 }
