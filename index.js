@@ -4,6 +4,9 @@ module.exports = function (renamer) {
         return tree;
       }
       tree.walk(function(node) {
+        if (!node.attrs) {
+          return node;
+        }
         const attrs = Object.keys(node.attrs);
         node.attrs = attrs.reduce((acc, key) => (
           Object.assign(acc, { [renamer(key, node.attrs[key])]: node.attrs[key] })
