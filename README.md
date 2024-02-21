@@ -4,6 +4,7 @@
   <p>Programmatically rename HTML attributes</p>
 
   [![Version][npm-version-shield]][npm]
+  [![Build][github-ci-shield]][github-ci]
   [![License][license-shield]][license]
   [![Downloads][npm-stats-shield]][npm-stats]
 </div>
@@ -48,5 +49,7 @@ Result:
 [npm-version-shield]: https://img.shields.io/npm/v/posthtml-rename-attrs.svg
 [npm-stats]: http://npm-stat.com/charts.html?package=posthtml-rename-attrs
 [npm-stats-shield]: https://img.shields.io/npm/dt/posthtml-rename-attrs.svg
+[github-ci]: https://github.com/posthtml/posthtml-rename-attrs/actions/workflows/nodejs.yml
+[github-ci-shield]: https://github.com/posthtml/posthtml-rename-attrs/actions/workflows/nodejs.yml/badge.svg
 [license]: ./LICENSE
 [license-shield]: https://img.shields.io/npm/l/posthtml-rename-attrs.svg
